@@ -13,19 +13,20 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #06060e;
-      --surface: rgba(14, 14, 28, .85);
-      --surface-solid: #0e0e1c;
-      --purple: #7c3aed;
-      --purple-light: #a855f7;
-      --purple-soft: #c084fc;
-      --purple-glow: rgba(124, 58, 237, .35);
-      --green: #22c55e;
-      --red: #ef4444;
-      --text: #f0e6ff;
-      --text-muted: #9a8fc0;
-      --border: rgba(124, 58, 237, .18);
-      --border-focus: rgba(168, 85, 247, .5);
+      --bg: #ffffff;
+      --black: #0a0a0a;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #e5e5e5;
+      --gray-300: #d4d4d4;
+      --gray-400: #a3a3a3;
+      --gray-500: #737373;
+      --gray-600: #525252;
+      --gray-800: #262626;
+      --green: #16a34a;
+      --red: #dc2626;
+      --border: rgba(0, 0, 0, .08);
+      --border-focus: rgba(0, 0, 0, .2);
       --font-display: 'Bebas Neue', sans-serif;
       --font-body: 'Outfit', sans-serif;
     }
@@ -34,91 +35,25 @@
 
     body {
       font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--text);
+      background: var(--gray-50);
+      color: var(--black);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px 16px;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* ── Ambient Background ─────────────────────────── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 700px 500px at 50% 0%, rgba(124, 58, 237, .15), transparent 70%),
-        radial-gradient(ellipse 500px 400px at 85% 80%, rgba(168, 85, 247, .08), transparent 70%),
-        radial-gradient(ellipse 400px 350px at 10% 70%, rgba(124, 58, 237, .06), transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── Floating Particles (pure CSS) ──────────────── */
-    .particles {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .particles span {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: var(--purple-soft);
-      border-radius: 50%;
-      opacity: 0;
-      animation: floatUp linear infinite;
-    }
-    .particles span:nth-child(1) { left: 12%; animation-duration: 12s; animation-delay: 0s; }
-    .particles span:nth-child(2) { left: 30%; animation-duration: 15s; animation-delay: 2s; width: 2px; height: 2px; }
-    .particles span:nth-child(3) { left: 55%; animation-duration: 10s; animation-delay: 4s; }
-    .particles span:nth-child(4) { left: 75%; animation-duration: 14s; animation-delay: 1s; width: 2px; height: 2px; }
-    .particles span:nth-child(5) { left: 90%; animation-duration: 11s; animation-delay: 3s; }
-    .particles span:nth-child(6) { left: 42%; animation-duration: 16s; animation-delay: 5s; width: 4px; height: 4px; }
-    .particles span:nth-child(7) { left: 65%; animation-duration: 13s; animation-delay: 7s; width: 2px; height: 2px; }
-    .particles span:nth-child(8) { left: 20%; animation-duration: 18s; animation-delay: 6s; }
-
-    @keyframes floatUp {
-      0%   { bottom: -10px; opacity: 0; }
-      10%  { opacity: .4; }
-      90%  { opacity: .15; }
-      100% { bottom: 110vh; opacity: 0; }
     }
 
     /* ── Card ───────────────────────────────────────── */
     .card {
       position: relative;
-      z-index: 1;
       width: 100%;
-      max-width: 480px;
-      background: var(--surface);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border);
-      border-radius: 24px;
+      max-width: 440px;
+      background: var(--bg);
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
       padding: 44px 36px 36px;
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.03) inset,
-        0 25px 80px -12px rgba(0,0,0,.6),
-        0 0 120px -40px rgba(124, 58, 237, .15);
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--purple-light), transparent);
-      border-radius: 1px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.04);
     }
 
     /* ── Header ─────────────────────────────────────── */
@@ -128,35 +63,32 @@
     }
 
     .header__logo {
-      width: 160px;
+      width: 140px;
       height: auto;
       margin: 0 auto 12px;
       display: block;
-      filter: drop-shadow(0 0 20px rgba(124, 58, 237, .3));
+      filter: invert(1);
     }
 
     .header__tagline {
       font-family: var(--font-display);
-      font-size: 1.1rem;
-      letter-spacing: 4px;
-      color: var(--text-muted);
+      font-size: 1rem;
+      letter-spacing: 5px;
+      color: var(--gray-400);
     }
 
     .header__divider {
-      width: 50px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--purple), var(--purple-light), transparent);
-      border-radius: 2px;
+      width: 32px;
+      height: 1px;
+      background: var(--gray-300);
       margin: 14px auto 0;
     }
 
     .header__title {
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--purple-soft);
-      margin-top: 16px;
-      letter-spacing: .3px;
+      font-weight: 500;
+      font-size: .92rem;
+      color: var(--gray-600);
+      margin-top: 14px;
     }
 
     /* ── Photo Upload ──────────────────────────────── */
@@ -168,36 +100,29 @@
     }
 
     .photo-ring {
-      position: relative;
-      width: 130px;
-      height: 130px;
+      width: 116px;
+      height: 116px;
       border-radius: 50%;
+      border: 2px solid var(--gray-200);
       padding: 3px;
-      background: linear-gradient(135deg, var(--purple), var(--purple-light), var(--purple));
-      background-size: 200% 200%;
-      animation: gradientSpin 4s ease infinite;
       cursor: pointer;
-    }
-
-    @keyframes gradientSpin {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+      transition: border-color .3s, box-shadow .3s;
     }
 
     .photo-ring:hover {
-      box-shadow: 0 0 30px var(--purple-glow);
+      border-color: var(--gray-400);
+      box-shadow: 0 0 0 4px rgba(0,0,0,.03);
     }
 
     .photo-inner {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background: var(--surface-solid);
+      background: var(--gray-100);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      position: relative;
     }
 
     .photo-inner img {
@@ -214,79 +139,77 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
-      color: var(--text-muted);
-      font-size: .72rem;
+      gap: 4px;
+      color: var(--gray-400);
+      font-size: .68rem;
       pointer-events: none;
     }
 
     .photo-placeholder svg {
-      width: 28px;
-      height: 28px;
-      stroke: var(--purple-soft);
-      opacity: .7;
+      width: 24px;
+      height: 24px;
+      stroke: var(--gray-400);
     }
 
     .photo-hint {
-      font-size: .75rem;
-      color: var(--text-muted);
+      font-size: .74rem;
+      color: var(--gray-500);
       margin-top: 12px;
       text-align: center;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .photo-hint strong {
-      color: var(--purple-soft);
-      font-weight: 500;
+      color: var(--gray-800);
+      font-weight: 600;
     }
 
     #photoInput { display: none; }
 
     /* ── Form Fields ───────────────────────────────── */
     .field {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .field label {
       display: block;
-      font-size: .78rem;
-      font-weight: 500;
-      color: var(--text-muted);
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--gray-500);
       margin-bottom: 6px;
-      letter-spacing: .5px;
+      letter-spacing: .8px;
       text-transform: uppercase;
     }
 
     .field input {
       width: 100%;
-      padding: 13px 16px;
-      background: rgba(6, 6, 14, .6);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      color: var(--text);
+      padding: 12px 14px;
+      background: var(--bg);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      color: var(--black);
       font-family: var(--font-body);
-      font-size: .92rem;
+      font-size: .9rem;
       outline: none;
-      transition: border-color .3s, box-shadow .3s, background .3s;
+      transition: border-color .2s, box-shadow .2s;
     }
 
     .field input::placeholder {
-      color: rgba(154, 143, 192, .35);
+      color: var(--gray-400);
     }
 
     .field input:focus {
-      border-color: var(--border-focus);
-      box-shadow: 0 0 0 3px rgba(124, 58, 237, .15), 0 0 20px -5px rgba(124, 58, 237, .2);
-      background: rgba(14, 14, 28, .8);
+      border-color: var(--black);
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, .05);
     }
 
     .field input.invalid {
       border-color: var(--red);
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, .15);
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, .08);
     }
 
     .field .error-msg {
-      font-size: .72rem;
+      font-size: .7rem;
       color: var(--red);
       margin-top: 4px;
       display: none;
@@ -299,44 +222,27 @@
     /* ── Submit Button ─────────────────────────────── */
     .btn-submit {
       width: 100%;
-      padding: 15px;
-      margin-top: 10px;
+      padding: 14px;
+      margin-top: 8px;
       border: none;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 60%, #c084fc 100%);
-      background-size: 200% 200%;
-      color: #fff;
+      border-radius: 12px;
+      background: var(--black);
+      color: var(--bg);
       font-family: var(--font-body);
-      font-size: 1rem;
+      font-size: .95rem;
       font-weight: 600;
-      letter-spacing: .5px;
+      letter-spacing: .2px;
       cursor: pointer;
-      transition: transform .25s, box-shadow .25s, opacity .25s;
+      transition: transform .2s, box-shadow .2s, opacity .2s;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-submit::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,.12) 50%, transparent 70%);
-      background-size: 250% 250%;
-      animation: shimmer 3s ease infinite;
-    }
-
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
+      gap: 8px;
     }
 
     .btn-submit:hover:not(:disabled) {
-      transform: scale(1.02) translateY(-1px);
-      box-shadow: 0 8px 40px -8px rgba(124, 58, 237, .5);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.15);
     }
 
     .btn-submit:active:not(:disabled) {
@@ -344,55 +250,43 @@
     }
 
     .btn-submit:disabled {
-      opacity: .6;
+      opacity: .4;
       cursor: not-allowed;
-    }
-
-    .btn-submit span {
-      position: relative;
-      z-index: 1;
     }
 
     /* ── Spinner ────────────────────────────────────── */
     .spinner {
-      width: 18px;
-      height: 18px;
-      border: 2.5px solid rgba(255,255,255,.3);
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,.3);
       border-top-color: #fff;
       border-radius: 50%;
       animation: spin .6s linear infinite;
       display: none;
-      position: relative;
-      z-index: 1;
     }
 
     .btn-submit.loading .spinner { display: inline-block; }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ── Toast ──────────────────────────────────────── */
     .toast {
       position: fixed;
-      top: 24px;
+      top: 20px;
       left: 50%;
-      transform: translateX(-50%) translateY(-120px);
-      padding: 16px 24px;
-      border-radius: 16px;
+      transform: translateX(-50%) translateY(-100px);
+      padding: 12px 20px;
+      border-radius: 12px;
       font-family: var(--font-body);
-      font-size: .9rem;
+      font-size: .85rem;
       font-weight: 500;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       z-index: 999;
       opacity: 0;
-      transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .5s;
-      box-shadow: 0 12px 50px rgba(0,0,0,.5);
+      transition: transform .4s cubic-bezier(.22,1,.36,1), opacity .4s;
       max-width: 90vw;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
     }
 
     .toast.show {
@@ -401,69 +295,60 @@
     }
 
     .toast.success {
-      background: rgba(6, 78, 59, .9);
-      border: 1px solid rgba(34, 197, 94, .3);
-      color: #bbf7d0;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
     }
 
     .toast.error {
-      background: rgba(69, 10, 10, .9);
-      border: 1px solid rgba(239, 68, 68, .3);
-      color: #fecaca;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
     }
 
-    .toast-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .toast-icon { font-size: 1.1rem; flex-shrink: 0; }
 
     /* ── Animations ─────────────────────────────────── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     .anim {
       opacity: 0;
-      animation: fadeUp .7s cubic-bezier(.22,1,.36,1) forwards;
+      animation: fadeUp .6s cubic-bezier(.22,1,.36,1) forwards;
     }
 
-    .d1 { animation-delay: .05s; }
-    .d2 { animation-delay: .12s; }
-    .d3 { animation-delay: .19s; }
-    .d4 { animation-delay: .26s; }
-    .d5 { animation-delay: .33s; }
-    .d6 { animation-delay: .40s; }
-    .d7 { animation-delay: .47s; }
-    .d8 { animation-delay: .54s; }
-    .d9 { animation-delay: .61s; }
+    .d1 { animation-delay: .04s; }
+    .d2 { animation-delay: .10s; }
+    .d3 { animation-delay: .16s; }
+    .d4 { animation-delay: .22s; }
+    .d5 { animation-delay: .28s; }
+    .d6 { animation-delay: .34s; }
+    .d7 { animation-delay: .40s; }
+    .d8 { animation-delay: .46s; }
 
     /* ── Footer ─────────────────────────────────────── */
     .footer-note {
       text-align: center;
       font-size: .68rem;
-      color: rgba(154, 143, 192, .35);
-      margin-top: 18px;
-      letter-spacing: .3px;
+      color: var(--gray-400);
+      margin-top: 16px;
     }
 
     /* ── Responsive ─────────────────────────────────── */
     @media (max-width: 540px) {
       .card {
-        padding: 32px 20px 28px;
-        border-radius: 20px;
+        padding: 32px 22px 28px;
+        border-radius: 16px;
       }
-      .header__logo { width: 130px; }
-      .photo-ring { width: 110px; height: 110px; }
-      .field input { padding: 12px 14px; font-size: .88rem; }
-      .btn-submit { padding: 14px; }
+      .header__logo { width: 115px; }
+      .photo-ring { width: 100px; height: 100px; }
+      .field input { padding: 11px 13px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- Particles -->
-  <div class="particles">
-    <span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span>
-  </div>
 
   <!-- Toast -->
   <div class="toast" id="toast">
@@ -474,7 +359,6 @@
   <!-- Card -->
   <div class="card">
 
-    <!-- Header -->
     <div class="header anim d1">
       <img src="https://i.imgur.com/WPBwZI4.png" alt="Ministério ELIM" class="header__logo" />
       <div class="header__tagline">MINISTÉRIO DE JOVENS</div>
@@ -484,7 +368,6 @@
 
     <form id="cadastroForm" novalidate autocomplete="off">
 
-      <!-- Photo -->
       <div class="photo-section anim d2">
         <div class="photo-ring" id="photoCircle" tabindex="0" role="button" aria-label="Selecionar foto de aniversário">
           <div class="photo-inner" id="photoInner">
@@ -499,38 +382,33 @@
           </div>
         </div>
         <input type="file" id="photoInput" accept="image/*" />
-        <p class="photo-hint">Envie sua <strong>melhor foto</strong> — ela será usada<br>para celebrar seu aniversário! 🎉</p>
+        <p class="photo-hint">Envie sua <strong>melhor foto</strong> — ela será usada<br>para celebrar seu aniversário 🎉</p>
       </div>
 
-      <!-- Nome -->
       <div class="field anim d3">
         <label for="nome">Nome completo</label>
-        <input type="text" id="nome" placeholder="Ex: Maria da Silva" required />
+        <input type="text" id="nome" placeholder="Maria da Silva" required />
         <span class="error-msg">Informe seu nome completo.</span>
       </div>
 
-      <!-- Aniversário -->
       <div class="field anim d4">
         <label for="aniversario">Data de aniversário</label>
         <input type="date" id="aniversario" required />
         <span class="error-msg">Selecione sua data de aniversário.</span>
       </div>
 
-      <!-- E-mail -->
       <div class="field anim d5">
         <label for="email">E-mail</label>
         <input type="email" id="email" placeholder="seu@email.com" required />
         <span class="error-msg">Informe um e-mail válido.</span>
       </div>
 
-      <!-- Celular -->
       <div class="field anim d6">
         <label for="celular">Número de celular</label>
         <input type="tel" id="celular" placeholder="(00) 00000-0000" required maxlength="15" />
         <span class="error-msg">Informe um número de celular válido.</span>
       </div>
 
-      <!-- Submit -->
       <button type="submit" class="btn-submit anim d7" id="btnSubmit">
         <span class="spinner"></span>
         <span id="btnText">Cadastrar</span>
@@ -541,13 +419,9 @@
   </div>
 
   <script>
-    // ╔═══════════════════════════════════════════════════════════╗
-    // ║  CONFIGURAÇÕES — Troque as chaves abaixo                ║
-    // ╚═══════════════════════════════════════════════════════════╝
     const IMGBB_API_KEY     = "fc5294ef0c479a8a606ed0194b717aa5";
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzT1vK7ERXbHyPqd-jy6Ix2HwDh4Y0VYCRkvB-ahldQ42LqYlzQjYgcKAlSzqMBYADi/exec";
 
-    // ── Elementos ────────────────────────────────────────────────
     const form        = document.getElementById('cadastroForm');
     const photoCircle = document.getElementById('photoCircle');
     const photoInner  = document.getElementById('photoInner');
@@ -558,29 +432,22 @@
     const toast       = document.getElementById('toast');
     const toastIcon   = document.getElementById('toastIcon');
     const toastMsg    = document.getElementById('toastMsg');
+    let selectedFile  = null;
 
-    let selectedFile = null;
-
-    // ── Photo click/keyboard ─────────────────────────────────────
     photoCircle.addEventListener('click', () => photoInput.click());
     photoCircle.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); photoInput.click(); }
     });
 
-    // ── Photo preview ────────────────────────────────────────────
     photoInput.addEventListener('change', e => {
       const file = e.target.files[0];
       if (!file) return;
       selectedFile = file;
       const reader = new FileReader();
-      reader.onload = ev => {
-        photoPreview.src = ev.target.result;
-        photoInner.classList.add('has-photo');
-      };
+      reader.onload = ev => { photoPreview.src = ev.target.result; photoInner.classList.add('has-photo'); };
       reader.readAsDataURL(file);
     });
 
-    // ── Máscara de celular ───────────────────────────────────────
     const celularInput = document.getElementById('celular');
     celularInput.addEventListener('input', e => {
       let v = e.target.value.replace(/\D/g, '');
@@ -591,41 +458,21 @@
       e.target.value = v;
     });
 
-    // ── Validação ────────────────────────────────────────────────
     function validate() {
       let ok = true;
-      const nome  = document.getElementById('nome');
-      const aniv  = document.getElementById('aniversario');
-      const email = document.getElementById('email');
-      const cel   = document.getElementById('celular');
+      const nome = document.getElementById('nome'), aniv = document.getElementById('aniversario');
+      const email = document.getElementById('email'), cel = document.getElementById('celular');
 
-      if (nome.value.trim().length < 3) { nome.classList.add('invalid'); ok = false; }
-      else nome.classList.remove('invalid');
-
-      if (!aniv.value) { aniv.classList.add('invalid'); ok = false; }
-      else aniv.classList.remove('invalid');
-
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.classList.add('invalid'); ok = false; }
-      else email.classList.remove('invalid');
-
-      if (cel.value.replace(/\D/g, '').length < 10) { cel.classList.add('invalid'); ok = false; }
-      else cel.classList.remove('invalid');
-
-      if (!selectedFile) {
-        photoCircle.style.boxShadow = '0 0 0 3px var(--red), 0 0 20px rgba(239,68,68,.2)';
-        ok = false;
-      } else {
-        photoCircle.style.boxShadow = '';
-      }
-
+      if (nome.value.trim().length < 3) { nome.classList.add('invalid'); ok = false; } else nome.classList.remove('invalid');
+      if (!aniv.value) { aniv.classList.add('invalid'); ok = false; } else aniv.classList.remove('invalid');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.classList.add('invalid'); ok = false; } else email.classList.remove('invalid');
+      if (cel.value.replace(/\D/g,'').length < 10) { cel.classList.add('invalid'); ok = false; } else cel.classList.remove('invalid');
+      if (!selectedFile) { photoCircle.style.borderColor = 'var(--red)'; ok = false; } else photoCircle.style.borderColor = '';
       return ok;
     }
 
-    document.querySelectorAll('.field input').forEach(inp => {
-      inp.addEventListener('input', () => inp.classList.remove('invalid'));
-    });
+    document.querySelectorAll('.field input').forEach(inp => inp.addEventListener('input', () => inp.classList.remove('invalid')));
 
-    // ── Toast ────────────────────────────────────────────────────
     let toastTimer = null;
     function showToast(type, msg) {
       clearTimeout(toastTimer);
@@ -636,121 +483,81 @@
       toastTimer = setTimeout(() => toast.classList.remove('show'), 5000);
     }
 
-    // ── Loading ──────────────────────────────────────────────────
     function setLoading(on) {
       btnSubmit.disabled = on;
       btnSubmit.classList.toggle('loading', on);
       btnText.textContent = on ? 'Enviando...' : 'Cadastrar';
     }
 
-    // ── Comprimir imagem via Canvas ──────────────────────────────
     function compressImage(file, maxW = 1200, q = 0.8) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = e => {
           const img = new Image();
           img.onload = () => {
-            const canvas = document.createElement('canvas');
+            const c = document.createElement('canvas');
             let w = img.width, h = img.height;
             if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
-            canvas.width = w; canvas.height = h;
-            canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-            resolve(canvas.toDataURL('image/jpeg', q).split(',')[1]);
+            c.width = w; c.height = h;
+            c.getContext('2d').drawImage(img, 0, 0, w, h);
+            resolve(c.toDataURL('image/jpeg', q).split(',')[1]);
           };
-          img.onerror = reject;
-          img.src = e.target.result;
+          img.onerror = reject; img.src = e.target.result;
         };
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
+        reader.onerror = reject; reader.readAsDataURL(file);
       });
     }
 
-    // ── Upload imgbb ─────────────────────────────────────────────
     async function uploadToImgbb(base64) {
-      const fd = new FormData();
-      fd.append('image', base64);
-      const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
-        method: 'POST', body: fd
-      });
-      if (!res.ok) {
-        console.error('imgbb:', res.status, await res.text().catch(() => ''));
-        throw new Error('Erro ao fazer upload da imagem');
-      }
+      const fd = new FormData(); fd.append('image', base64);
+      const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method:'POST', body:fd });
+      if (!res.ok) throw new Error('Erro ao fazer upload da imagem');
       const json = await res.json();
       if (!json.success) throw new Error(json.error?.message || 'Falha no upload');
       return json.data.url;
     }
 
-    // ── Google Sheets ────────────────────────────────────────────
     async function sendToSheets(payload) {
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        redirect: 'follow',
-        body: JSON.stringify(payload)
-      });
+      await fetch(GOOGLE_SCRIPT_URL, { method:'POST', mode:'no-cors', redirect:'follow', body:JSON.stringify(payload) });
     }
 
-    // ── Reset ────────────────────────────────────────────────────
     function resetForm() {
-      form.reset();
-      selectedFile = null;
-      photoPreview.src = '';
+      form.reset(); selectedFile = null; photoPreview.src = '';
       photoInner.classList.remove('has-photo');
-      document.querySelectorAll('.field input').forEach(inp => inp.classList.remove('invalid'));
-      photoCircle.style.boxShadow = '';
+      document.querySelectorAll('.field input').forEach(i => i.classList.remove('invalid'));
+      photoCircle.style.borderColor = '';
     }
 
-    // ── Submit ───────────────────────────────────────────────────
     form.addEventListener('submit', async e => {
       e.preventDefault();
       if (!validate()) return;
-
       setLoading(true);
       try {
-        const base64  = await compressImage(selectedFile);
+        const base64 = await compressImage(selectedFile);
         const fotoUrl = await uploadToImgbb(base64);
-
         await sendToSheets({
-          nome:        document.getElementById('nome').value.trim(),
+          nome: document.getElementById('nome').value.trim(),
           aniversario: document.getElementById('aniversario').value,
-          foto:        fotoUrl,
-          email:       document.getElementById('email').value.trim(),
-          celular:     document.getElementById('celular').value.trim()
+          foto: fotoUrl,
+          email: document.getElementById('email').value.trim(),
+          celular: document.getElementById('celular').value.trim()
         });
-
         showToast('success', 'Cadastro realizado com sucesso! 🎉');
         resetForm();
       } catch (err) {
         console.error(err);
         showToast('error', err.message || 'Ocorreu um erro. Tente novamente.');
-      } finally {
-        setLoading(false);
-      }
+      } finally { setLoading(false); }
     });
   </script>
 
   <!--
-  ╔═══════════════════════════════════════════════════════════════════╗
-  ║  GOOGLE APPS SCRIPT — Cole no editor do Apps Script              ║
-  ║  (Extensions > Apps Script) da planilha Google Sheets.           ║
-  ║                                                                   ║
-  ║  Deploy > New deployment > Web App                                ║
-  ║  Execute as: Me  |  Who has access: Anyone                       ║
-  ║  Copie a URL e cole na variável GOOGLE_SCRIPT_URL acima.         ║
-  ╚═══════════════════════════════════════════════════════════════════╝
+  GOOGLE APPS SCRIPT — Cole no Apps Script da planilha:
 
   function doPost(e) {
     const data = JSON.parse(e.postData.contents);
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    sheet.appendRow([
-      new Date(),
-      data.nome,
-      data.aniversario,
-      data.foto,
-      data.email,
-      data.celular
-    ]);
+    sheet.appendRow([new Date(), data.nome, data.aniversario, data.foto, data.email, data.celular]);
     return ContentService.createTextOutput("OK");
   }
   -->
