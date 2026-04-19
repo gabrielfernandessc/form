@@ -527,8 +527,15 @@
       if (!validate()) return;
       setLoading(true);
       try {
-        // Upload direto do arquivo original (sem compressão)
-        const fotoUrl = await uploadToCloudinary(selectedFile);
+        // 1. Tenta upload da foto (não bloqueia o cadastro se falhar)
+        let fotoUrl = '';
+        try {
+          fotoUrl = await uploadToCloudinary(selectedFile);
+        } catch (imgErr) {
+          console.warn('Upload da imagem falhou:', imgErr);
+        }
+
+        // 2. Sempre envia os dados para a planilha
         await sendToSheets({
           nome: document.getElementById('nome').value.trim(),
           aniversario: document.getElementById('aniversario').value,
@@ -536,7 +543,12 @@
           email: document.getElementById('email').value.trim(),
           celular: document.getElementById('celular').value.trim()
         });
-        showToast('success', 'Cadastro realizado com sucesso! 🎉');
+
+        if (fotoUrl) {
+          showToast('success', 'Cadastro realizado com sucesso! 🎉');
+        } else {
+          showToast('success', 'Cadastro salvo! (foto será enviada depois)');
+        }
         resetForm();
       } catch (err) {
         console.error(err);
